@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON to HTML Module</title>
+</head>
+<body>
+    <h1>json2html JavaScript Module</h1>
+    <p>This module can be imported using the following URL:</p>
+    <code>https://your-username.github.io/your-repo/json2html.js</code>
+    <p>Use it in your project to convert JSON data into an HTML table.</p>
+</body>
+  <script>
+    export default function json2html(data) {
+  const columns = [...new Set(data.flatMap(Object.keys))];
+  let html = `<table data-user="rajeshchilivery23@gmail.com">`;
+
+  html += "<thead><tr>";
+  columns.forEach(column => {
+    html += `<th>${column}</th>`;
+  });
+  html += "</tr></thead>";
+
+  html += "<tbody>";
+  data.forEach(row => {
+    html += "<tr>";
+    columns.forEach(column => {
+      html += `<td>${row[column] || ""}</td>`;
+    });
+    html += "</tr>";
+  });
+  html += "</tbody></table>";
+
+  return html;
+}
+  </script>
+</html>
